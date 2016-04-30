@@ -4,12 +4,15 @@
   "description": "A serverless app built using AWS lambda, API gateway, React and graphql",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "semistandard",
+    "clean": "rm -rf public && mkdir -p public/",
     "deploy-lambda": "node ./node_modules/dpl/dpl.js",
     "create-api": "bash scripts/create-api.sh",
     "create-iam": "bash scripts/create-iam.sh",
     "s3-create-app": "bash scripts/s3-create-app.sh",
-    "s3-update-app": "bash scripts/s3-update-app.sh"
+    "s3-update-app": "bash scripts/s3-update-app.sh",
+    "graphiql:serve": "webpack-dev-server --hot --inline --config webpack.config.js",
+    "graphiql:build": "npm run clean && ./node_modules/.bin/webpack --config ./webpack.graphiql.production.config.js"
   },
   "repository": {
     "type": "git",
@@ -35,6 +38,16 @@
   },
   "files_to_deploy": [
     "package.json",
-    "index.js"
-  ]
+    "graphql/index.js"
+  ],
+  "dependencies": {
+    "css-loader": "^0.23.1",
+    "graphiql": "^0.7.1",
+    "react": "^15.0.2",
+    "react-dom": "^15.0.2",
+    "react-hot-loader": "^1.3.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.0",
+    "webpack-dev-server": "^1.14.1"
+  }
 }
