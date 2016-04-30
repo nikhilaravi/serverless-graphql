@@ -1,4 +1,4 @@
-api_name='serverless-graphql'
+api_name='serverless-graphql-v3'
 api_description="Graphql endpoint"
 root_path=/
 resource_path=graphql
@@ -63,7 +63,8 @@ aws apigateway put-method-response \
   --resource-id "$resource_id" \
   --http-method POST \
   --status-code 200 \
-  --response-models "{\"application/json\": \"Empty\"}"
+  --response-models "{\"application/json\": \"Empty\"}" \
+  --response-parameters '{"method.response.header.Access-Control-Allow-Origin":true}'
 
 # set the POST method integration response to JSON. This is the response type that Lambda function returns.
 
@@ -72,13 +73,14 @@ aws apigateway put-integration-response \
   --resource-id "$resource_id" \
   --http-method POST \
   --status-code 200 \
-  --response-templates "{\"application/json\": \"\"}"
+  --response-templates "{\"application/json\": \"\"}" \
+  --response-parameters '{"method.response.header.Access-Control-Allow-Origin":"'"'*'"'"}'
 
 # add permissions to lambda to call api gateway
 
 aws lambda add-permission \
   --function-name "$lambda_function" \
-  --statement-id apigateway-prod-7 \
+  --statement-id apigateway-prod-17 \
   --action lambda:InvokeFunction \
   --principal apigateway.amazonaws.com \
   --source-arn "arn:aws:execute-api:$region:$account_id:$api_id/prod/POST/$resource_path"
@@ -87,7 +89,7 @@ aws lambda add-permission \
 
 aws lambda add-permission \
   --function-name "$lambda_function" \
-  --statement-id apigateway-test-10 \
+  --statement-id apigateway-test-17 \
   --action lambda:InvokeFunction \
   --principal apigateway.amazonaws.com \
   --source-arn "arn:aws:execute-api:$region:$account_id:$api_id/*/POST/$resource_path"

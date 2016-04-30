@@ -4,7 +4,6 @@
   "description": "A serverless app built using AWS lambda, API gateway, React and graphql",
   "main": "index.js",
   "scripts": {
-    "clean": "rm -rf tmp && mkdir -p tmp/",
     "deploy-lambda": "node ./node_modules/dpl/dpl.js",
     "create-api": "bash scripts/create-api.sh",
     "create-iam": "bash scripts/create-iam.sh",
@@ -43,6 +42,7 @@
     "lib/"
   ],
   "dependencies": {
-    "graphql": "^0.5.0"
+    "graphql": "^0.5.0",
+    "lodash": "^4.11.1"
   }
 }
