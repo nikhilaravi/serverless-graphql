@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # IAM trust policy
 
 aws iam create-role \
@@ -35,3 +37,10 @@ aws iam put-role-policy \
       }
     ]
   }'
+
+export AWS_IAM_ROLE=$(aws iam get-role \
+ --role-name  "lambda_execution" \
+ --output text \
+ --query 'Role.Arn')
+
+ echo $AWS_IAM_ROLE

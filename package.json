@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "deploy-lambda": "node ./node_modules/dpl/dpl.js",
-    "create-api": "bash scripts/create-api.sh",
-    "create-iam": "bash scripts/create-iam.sh",
+    "create-api": "./scripts/create-api.sh",
+    "create-iam": ". ./scripts/create-iam.sh",
     "deploy-app": "npm run deploy-lambda && npm run create-api"
   },
   "repository": {

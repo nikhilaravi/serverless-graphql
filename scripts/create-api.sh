@@ -1,3 +1,5 @@
+#!/bin/bash  
+
 api_name='serverless-graphql-v3'
 api_description="Graphql endpoint"
 root_path=/
