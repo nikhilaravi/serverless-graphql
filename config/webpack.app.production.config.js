@@ -4,7 +4,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: ['./public/graphiql/src/index.js'],
   output: {
-    path: __dirname + '/public/graphql/',
+    path: __dirname + '/tmp/graphql/',
     filename: 'bundle-[hash:6].js'
   },
   module: {
