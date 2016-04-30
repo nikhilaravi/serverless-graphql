@@ -8,10 +8,7 @@
     "deploy-lambda": "node ./node_modules/dpl/dpl.js",
     "create-api": "bash scripts/create-api.sh",
     "create-iam": "bash scripts/create-iam.sh",
-    "s3-create-app": "bash scripts/s3-create-app.sh",
-    "s3-update-app": "bash scripts/s3-update-app.sh",
-    "graphiql:serve": "webpack-dev-server --hot --inline --config ./config/webpack.graphiql.config.js",
-    "graphiql:build": "npm run clean && ./node_modules/.bin/webpack --config ./config/webpack.graphiql.production.config.js"
+    "deploy-app": "npm run deploy-lambda && npm run create-api"
   },
   "repository": {
     "type": "git",
@@ -33,21 +30,19 @@
   },
   "homepage": "https://github.com/nikhilaravi/serverless-graphql#readme",
   "devDependencies": {
-    "dpl": "^2.1.0"
+    "aws-sdk": "^2.3.7",
+    "dpl": "^2.1.0",
+    "gulp": "^3.9.1",
+    "gulp-install": "^0.6.0",
+    "gulp-zip": "^3.2.0",
+    "run-sequence": "^1.1.5"
   },
   "files_to_deploy": [
     "package.json",
-    "graphql/index.js"
+    "index.js",
+    "lib/"
   ],
   "dependencies": {
-    "css-loader": "^0.23.1",
-    "graphiql": "^0.7.1",
-    "graphql": "^0.5.0",
-    "react": "^15.0.2",
-    "react-dom": "^15.0.2",
-    "react-hot-loader": "^1.3.0",
-    "style-loader": "^0.13.1",
-    "webpack": "^1.13.0",
-    "webpack-dev-server": "^1.14.1"
+    "graphql": "^0.5.0"
   }
 }
