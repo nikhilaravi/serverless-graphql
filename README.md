@@ -1,15 +1,7 @@
 # serverless-graphql
-Testing out building a serverless graphql app using AWS
+A serverless app using AWS Lambda, React, GraphQL, API Gateway and Node.js!
 
-
-- Create amazon account
-- Get your access key id and secret access key
-- Give your user super access - add administrator acces policy!
-- iam create role (trust policy for lambda)
-- iam put role policy (access policy for lambda)
-- Check the policy has been added
-`
-aws iam get-role-policy --role-name lambda_execution_role_name --policy-name lambda_execution_access_policy_name
-`
-
--
+Before you start
+- Create an Amazon account
+- Get your access key id and secret access key and export then as environment variables
+- Give your user super access - add administrator access policy!
