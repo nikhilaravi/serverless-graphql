@@ -5,6 +5,7 @@ resource_path=graphql
 stage_name=prod
 region=eu-west-1
 account_id=$AWS_ACCOUNT_ID
+lambda_function="serverless-graphql-v1"
 
 # create API
 
@@ -53,7 +54,7 @@ aws apigateway put-integration \
   --http-method POST \
   --type AWS \
   --integration-http-method POST \
-  --uri arn:aws:apigateway:aws-region:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:$account_id:function:serverless-graphql-v1/invocations
+  --uri arn:aws:apigateway:aws-region:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:$account_id:function:$lambda_function/invocations
 
 # set the POST method response to JSON
 
@@ -89,8 +90,8 @@ echo deployment_id=$deployment_id
 # add permissions to lambda to call api gateway
 
 aws lambda add-permission \
-  --function-name serverless-graphql-v1 \
-  --statement-id apigateway-prod-4 \
+  --function-name "$lambda_function" \
+  --statement-id apigateway-prod-5 \
   --action lambda:InvokeFunction \
   --principal apigateway.amazonaws.com \
   --source-arn "arn:aws:execute-api:eu-west-1:$account_id:$api_id/prod/POST$resource_path"
@@ -98,8 +99,8 @@ aws lambda add-permission \
 # grant the Amazon API Gateway service principal (apigateway.amazonaws.com) permissions to invoke your Lambda function
 
 aws lambda add-permission \
-  --function-name serverless-graphql-v1 \
-  --statement-id apigateway-test-4 \
+  --function-name "$lambda_function" \
+  --statement-id apigateway-test-5 \
   --action lambda:InvokeFunction \
   --principal apigateway.amazonaws.com \
   --source-arn "arn:aws:execute-api:eu-west-1:$account_id:$api_id/*/POST$resource_path"
