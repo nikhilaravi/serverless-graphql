@@ -31,8 +31,8 @@ Have a look at the create-api.sh file for the step by step process.
 
 This can be done in the AWS Console.
 
-[!enablecors](https://cloud.githubusercontent.com/assets/5912647/14939120/89607546-0f31-11e6-8b3f-37bf4b0c0a4d.png)
+![enablecors](https://cloud.githubusercontent.com/assets/5912647/14939120/89607546-0f31-11e6-8b3f-37bf4b0c0a4d.png)
 
 Navigate to the stages section and select 'prod'. You can then find the api invoke url. This will be needed to set up the GraphQL IDE (GraphiQL) and for the UI to invoke the lambda function
 
-[!invokeurl](https://cloud.githubusercontent.com/assets/5912647/14939122/8e752b30-0f31-11e6-83ee-81665d2f2856.png)
+![invokeurl](https://cloud.githubusercontent.com/assets/5912647/14939122/8e752b30-0f31-11e6-83ee-81665d2f2856.png)
