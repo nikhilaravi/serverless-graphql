@@ -1,4 +1,4 @@
-#!/bin/bash  
+#!/bin/bash
 
 api_name='serverless-graphql-v3'
 api_description="Graphql endpoint"
@@ -82,7 +82,7 @@ aws apigateway put-integration-response \
 
 aws lambda add-permission \
   --function-name "$lambda_function" \
-  --statement-id apigateway-prod-17 \
+  --statement-id apigateway-prod-18 \
   --action lambda:InvokeFunction \
   --principal apigateway.amazonaws.com \
   --source-arn "arn:aws:execute-api:$region:$account_id:$api_id/prod/POST/$resource_path"
@@ -91,7 +91,7 @@ aws lambda add-permission \
 
 aws lambda add-permission \
   --function-name "$lambda_function" \
-  --statement-id apigateway-test-17 \
+  --statement-id apigateway-test-18 \
   --action lambda:InvokeFunction \
   --principal apigateway.amazonaws.com \
   --source-arn "arn:aws:execute-api:$region:$account_id:$api_id/*/POST/$resource_path"

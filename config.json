@@ -1,0 +1,4 @@
+{
+  "apiRoot": "http://ws.audioscrobbler.com/2.0/",
+  "bucket": "serverless-graphql-demo"
+}
