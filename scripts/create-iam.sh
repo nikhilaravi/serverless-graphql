@@ -1,9 +1,10 @@
 #!/bin/bash
+role_name='lambda_execution_s3_test_1'
 
 # IAM trust policy
 
 aws iam create-role \
-  --role-name "lambda_execution_3" \
+  --role-name "$role_name" \
   --assume-role-policy-document '{
     "Version": "2012-10-17",
     "Statement": [
@@ -21,27 +22,38 @@ aws iam create-role \
 # IAM access policy
 
 aws iam put-role-policy \
-  --role-name  "lambda_execution_3" \
+  --role-name  "$role_name" \
   --policy-name "lambda_execution_access_policy" \
   --policy-document '{
     "Version": "2012-10-17",
     "Statement": [
       {
         "Effect": "Allow",
-        "Action": [ "logs:*", "dynamo:*", "cloudsearch:*", "s3:*" ],
+        "Action": [
+          "logs:CreateLogGroup",
+          "logs:CreateLogStream",
+          "logs:PutLogEvents"
+        ],
+        "Resource": "arn:aws:logs:*:*:*"
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "s3:*"
+        ],
         "Resource": [
-          "arn:aws:logs:*:*:*",
-          "arn:aws:dynamodb:*:*:*",
-          "arn:aws:cloudsearch:*:*:*",
           "arn:aws:s3:::*"
         ]
       }
     ]
   }'
 
-export AWS_IAM_ROLE=$(aws iam get-role \
- --role-name  "lambda_execution_3" \
+
+AWS_IAM_ROLE=$(aws iam get-role \
+ --role-name  "$role_name" \
  --output text \
  --query 'Role.Arn')
 
- echo $AWS_IAM_ROLE
+echo $AWS_IAM_ROLE
+
+export AWS_IAM_ROLE=$AWS_IAM_ROLE
