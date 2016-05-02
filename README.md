@@ -1,4 +1,4 @@
-# Serverless-GraphQ
+# Serverless-GraphQL
 
 A Serverless Jukebox app built using AWS Lambda, React, GraphQL, API Gateway and Node.js. You can search for songs using the [Last.fm api](http://www.last.fm/api) and save the names of songs you like to a playlist.
 
