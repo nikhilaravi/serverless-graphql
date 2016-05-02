@@ -58,7 +58,7 @@ npm run create-s3
 Now time to deploy the lambda function and API! Run the following command in your terminal window (which has all the environment variables set)
 
 ```sh
-npm run deploy-lambda && npm run create-api
+npm run deploy:app
 ```
 
 The lambda function is uploaded using the `dpl` node module. The components of the function are specified in the `files_to_deploy` key in the `package.json`. The important file is `index.js` which must contain an `exports.handler` function which accepts `event` and `context` parameters. The node modules in the `dependencies` in the `package.json` are also zipped along with any other files that are specified before being uploaded to AWS Lambda (either updating a function or creating a new function if it doesn't exist).
