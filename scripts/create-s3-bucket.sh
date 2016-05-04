@@ -1,4 +1,4 @@
-bucket="serverless-graphql-demo-3"
+bucket="serverless-graphql-demo-5"
 region="eu-west-1"
 
 aws s3api create-bucket \

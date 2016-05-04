@@ -1,5 +1,5 @@
 #!/bin/bash
-role_name='lambda_execution_s3_test_1'
+role_name='lambda_execution_s3_test_3'
 
 # IAM trust policy
 

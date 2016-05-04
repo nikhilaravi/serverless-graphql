@@ -1,14 +1,15 @@
 #!/bin/bash
 
-api_name='serverless-graphql-v4'
+api_name='serverless-graphql-v5'
 api_description="Graphql endpoint"
 root_path=/
 resource_path=graphql
 stage_name=prod
 region=$AWS_REGION
 account_id=$AWS_ACCOUNT_ID
-lambda_function="serverless-graphql-v1"
-random_id=$[RANDOM*100000]
+lambda_function="serverless-graphql-v2"
+random_id1=$[(RANDOM+RANDOM)*100000]
+random_id2=$[(RANDOM+RANDOM)*100000]
 
 # create API
 
@@ -83,7 +84,7 @@ aws apigateway put-integration-response \
 
 aws lambda add-permission \
   --function-name "$lambda_function" \
-  --statement-id $random_id \
+  --statement-id $random_id1 \
   --action lambda:InvokeFunction \
   --principal apigateway.amazonaws.com \
   --source-arn "arn:aws:execute-api:$region:$account_id:$api_id/prod/POST/$resource_path"
@@ -92,7 +93,7 @@ aws lambda add-permission \
 
 aws lambda add-permission \
   --function-name "$lambda_function" \
-  --statement-id $random_id \
+  --statement-id $random_id2 \
   --action lambda:InvokeFunction \
   --principal apigateway.amazonaws.com \
   --source-arn "arn:aws:execute-api:$region:$account_id:$api_id/*/POST/$resource_path"

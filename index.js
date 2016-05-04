@@ -1,4 +1,5 @@
 'use strict';
+require('env2')('.env');
 var graphql = require('graphql');
 var isEmpty = require('lodash.isempty');
 var schema = require('./lib/schema');

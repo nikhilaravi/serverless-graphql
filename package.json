@@ -1,6 +1,6 @@
 {
   "name": "serverless-graphql",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A serverless app built using AWS lambda, API gateway, React and graphql",
   "main": "index.js",
   "scripts": {
@@ -31,22 +31,19 @@
   "homepage": "https://github.com/nikhilaravi/serverless-graphql#readme",
   "devDependencies": {
     "aws-sdk": "^2.3.7",
-    "dpl": "^2.1.0",
-    "gulp": "^3.9.1",
-    "gulp-install": "^0.6.0",
-    "gulp-zip": "^3.2.0",
-    "run-sequence": "^1.1.5"
+    "dpl": "^3.0.1"
   },
   "files_to_deploy": [
     "package.json",
     "index.js",
     "lib/",
-    "config.json"
+    ".env"
   ],
   "dependencies": {
     "graphql": "^0.5.0",
     "isomorphic-fetch": "^2.2.1",
     "lodash.isempty": "^4.2.1",
-    "promise": "^7.1.1"
+    "promise": "^7.1.1",
+    "env2": "^2.0.7"
   }
 }
