@@ -8,18 +8,25 @@ A Serverless Jukebox app built using AWS Lambda, React, GraphQL, API Gateway and
 - AWS API Gateway - expose a public HTTP endpoint for the GraphQL lambda
 - Node.js
 
+## Architecture
+
+![architecture](https://cloud.githubusercontent.com/assets/5912647/15028187/7ebc0f4a-123f-11e6-8f91-835da1270db1.png)
+
 This repo has all the code for the GraphQL Lambda function and creation of an, s3 bucket and API Gateway endpoint connected to the lambda function.
 
 The GraphQL IDE and UI live here: https://github.com/nikhilaravi/serverless-graphql-app
 
 ## Before you start
 - Create an Amazon account
-- Get your access key id and secret access key and export then as environment variables
+- Get your access key id and secret access key. Give your user super access - add an administrator access policy so you can create lambdas, api endpoints etc using the aws-cli.
+
+Add the following environment variables to a .env file
 ```sh
-export AWS_ACCESS_KEY_ID='your_id_here'
-export AWS_SECRET_ACCESS_KEY='your_id_here'
+AWS_ACCESS_KEY_ID='your_id_here'
+AWS_SECRET_ACCESS_KEY='your_id_here'
+AWS_REGION='region' (e.g. 'eu-west-1')
+API_KEY='api key'
 ```
-- Give your user super access - add an administrator access policy so you can create lambdas, api endpoints etc using the aws-cli
 
 ## Start building!
 
@@ -45,7 +52,7 @@ export AWS_IAM_ROLE="arn:account_id:role_name"
 
 When a track is added to the playlist, it will be saved as a json file in s3. An s3 bucket needs to be created and given permission to be modified by other AWS services (i.e. permission to allow our Lambda to write and read from it).
 
-Modify the name of the bucket at the top of `./scripts/create-s3-bucket.sh` and also update the bucket name in the `./config.json` file (so the lambda knows which bucket to read and write to).
+Modify the name of the bucket at the top of `./scripts/create-s3-bucket.sh` and also update the bucket name in the `.env` file (so the lambda knows which bucket to read and write to).
 
 Create the bucket using the following command:
 
@@ -53,9 +60,14 @@ Create the bucket using the following command:
 npm run create-s3
 ```
 
-### 3. Create a graphql lambda function and connect it to an api gateway endpoint.
+and to the `.env` file add:
 
-Now time to deploy the lambda function and API! Run the following command in your terminal window (which has all the environment variables set)
+``
+S3_BUCKET='name of bucket'
+``
+### 3. Create a GraphQL lambda function and connect it to an API GATEWAY endpoint.
+
+Now time to deploy the lambda function and API endpoint! Run the following command in your terminal window (which has all the environment variables set)
 
 ```sh
 npm run deploy:app
@@ -89,3 +101,9 @@ Navigate to the stages section and select 'prod'. You can then find the api invo
 GREAT! Your lambda and api are now ready for the front end!
 
 Head over to https://github.com/nikhilaravi/serverless-graphql-app to learn how to deploy the GraphiQL IDE to query your schema and the UI for the Jukebox app!
+
+
+## TODO
+
+* [] update the 'create-api' script to update the gateway endpoint if it has already been created
+* [] add a script to Enable Cors from the command line
