@@ -10,7 +10,7 @@ A Serverless Jukebox app built using AWS Lambda, React, GraphQL, API Gateway and
 
 ## Architecture
 
-![architecture](https://cloud.githubusercontent.com/assets/5912647/15091794/b4f7e512-144b-11e6-8594-74b8d4983131.png)
+![architecture](https://cloud.githubusercontent.com/assets/5912647/15094803/deb865aa-14a7-11e6-870f-1fe552ead186.png)
 
 This repo has all the code for the GraphQL Lambda function and creation of an s3 bucket and API Gateway endpoint connected to the lambda function.
 
