@@ -1,5 +1,5 @@
 #!/bin/bash
-role_name='lambda_execution_s3_fac_test'
+role_name='lambda_execution_weekend_test_1'
 
 # IAM trust policy
 
@@ -43,6 +43,15 @@ aws iam put-role-policy \
         ],
         "Resource": [
           "arn:aws:s3:::*"
+        ]
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "lambda:*"
+        ],
+        "Resource": [
+          "arn:aws:lambda:*:*:*"
         ]
       }
     ]

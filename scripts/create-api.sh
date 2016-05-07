@@ -1,6 +1,6 @@
 #!/bin/bash
 
-api_name='serverless-graphql-demo-fac'
+api_name='serverless-graphql-demo-saturday'
 api_description="Graphql endpoint"
 root_path=/
 resource_path=graphql
