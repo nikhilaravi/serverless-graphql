@@ -12,7 +12,13 @@ A Serverless Jukebox app built using AWS Lambda, React, GraphQL, API Gateway and
 
 ![architecture](https://cloud.githubusercontent.com/assets/5912647/15091794/b4f7e512-144b-11e6-8594-74b8d4983131.png)
 
-This repo has all the code for the GraphQL Lambda function and creation of an, s3 bucket and API Gateway endpoint connected to the lambda function.
+This repo has all the code for the GraphQL Lambda function and creation of an s3 bucket and API Gateway endpoint connected to the lambda function.
+
+In addition to the GraphQL Lambda there are three other lambda functions
+
+* [**song-suggester**](https://github.com/nikhilaravi/song-suggester) - Queries the Last.fm api to retrieve song suggestions
+* [**s3-save**](https://github.com/nikhilaravi/s3-save) - Saves a selected song to an s3 bucket
+* [**s3-get**](https://github.com/nikhilaravi/s3-get) - Retrieves all songs from an s3 bucket
 
 The GraphQL IDE and UI live here: https://github.com/nikhilaravi/serverless-graphql-app
 
@@ -105,5 +111,5 @@ Head over to https://github.com/nikhilaravi/serverless-graphql-app to learn how 
 
 ## TODO
 
-* [] update the 'create-api' script to update the gateway endpoint if it has already been created
-* [] add a script to Enable Cors from the command line
+* [ ] update the 'create-api' script to update the gateway endpoint if it has already been created
+* [ ] add a script to Enable Cors from the command line
