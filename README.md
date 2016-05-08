@@ -25,6 +25,7 @@ The GraphQL IDE and UI live here: https://github.com/nikhilaravi/serverless-grap
 ## Before you start
 - Create an account on [Amazon](https://aws.amazon.com/console/)
 - Get your access key id and secret access key. Give your user super access - add an administrator access policy so you can create lambdas, api endpoints etc using the aws-cli.
+- Install the [aws-cli](http://docs.aws.amazon.com/cli/latest/userguide/installing.html#install-bundle-other-os) and configure it with your credentials by typing `aws configure` and pressing Enter. This interactive command will prompt you for your access keys and region. 
 - Get a last.fm api key by creating an account [https://secure.last.fm/login?next=/api/account/create](https://secure.last.fm/login?next=/api/account/create)
 
 Add the following environment variables to a .env file
