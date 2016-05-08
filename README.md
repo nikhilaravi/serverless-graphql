@@ -23,7 +23,7 @@ In addition to the GraphQL Lambda there are three other lambda functions
 The GraphQL IDE and UI live here: https://github.com/nikhilaravi/serverless-graphql-app
 
 ## Before you start
-- Create an Amazon account
+- Create an account on [Amazon](https://aws.amazon.com/console/)
 - Get your access key id and secret access key. Give your user super access - add an administrator access policy so you can create lambdas, api endpoints etc using the aws-cli.
 - Get a last.fm api key by creating an account [https://secure.last.fm/login?next=/api/account/create](https://secure.last.fm/login?next=/api/account/create)
 
