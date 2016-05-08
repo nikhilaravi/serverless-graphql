@@ -25,7 +25,7 @@ The GraphQL IDE and UI live here: https://github.com/nikhilaravi/serverless-grap
 ## Before you start
 - Create an account on [Amazon](https://aws.amazon.com/console/)
 - Get your access key id and secret access key. Give your user super access - add an administrator access policy so you can create lambdas, api endpoints etc using the aws-cli.
-- Install the [aws-cli](http://docs.aws.amazon.com/cli/latest/userguide/installing.html#install-bundle-other-os) and configure it with your credentials by typing `aws configure` and pressing Enter. This interactive command will prompt you for your access keys and region. 
+- Install the [aws-cli](http://docs.aws.amazon.com/cli/latest/userguide/installing.html#install-bundle-other-os) and configure it with your credentials by typing `aws configure` and pressing Enter. This interactive command will prompt you for your access keys and region.
 - Get a last.fm api key by creating an account [https://secure.last.fm/login?next=/api/account/create](https://secure.last.fm/login?next=/api/account/create)
 
 Add the following environment variables to a .env file
@@ -75,15 +75,19 @@ S3_BUCKET='name of bucket'
 ``
 ### 3. Create a GraphQL lambda function and connect it to an API GATEWAY endpoint.
 
-Now time to deploy the lambda function and API endpoint! Run the following command in your terminal window (which has all the environment variables set)
-
-```sh
-npm run deploy:app
-```
+Now time to deploy the lambda function and API endpoint!
 
 The lambda function is uploaded using the `dpl` node module. The components of the function are specified in the `files_to_deploy` key in the `package.json`. The important file is `index.js` which must contain an `exports.handler` function which accepts `event` and `context` parameters. The node modules in the `dependencies` in the `package.json` are also zipped along with any other files that are specified before being uploaded to AWS Lambda (either updating a function or creating a new function if it doesn't exist).
 
 Have a look at the notes in the [dpl npm module docs](https://github.com/numo-labs/aws-lambda-deploy) or ask @nelsonic for more info!
+
+To modify the name of the API you can edit the `./scripts/create-api.sh` file. You need to set the name of the lambda function at the top of this file. dpl names the lambda using the name in the `package.json` with the major version number suffixed e.g. 'serverless-graphql-v1'.
+
+Run the following command in your terminal window (which has all the environment variables set)
+
+```sh
+npm run deploy-app
+```
 
 The `aws-cli` is used to create the API Gateway endpoint and link it to the lambda function.
 

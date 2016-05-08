@@ -1,6 +1,6 @@
 {
   "name": "serverless-graphql",
-  "version": "4.0.0",
+  "version": "1.0.0",
   "description": "A serverless app built using AWS lambda, API gateway, React and graphql",
   "main": "index.js",
   "scripts": {

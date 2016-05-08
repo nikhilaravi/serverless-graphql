@@ -1,9 +1,9 @@
 #!/bin/bash
 
 ## TO BE SET
-api_name='demo-sunday-amma'
-lambda_function="serverless-graphql-v4"
-
+api_name="serverless-graphql"
+lambda_function="serverless-graphql"
+###
 
 api_description="Graphql endpoint"
 root_path=/
