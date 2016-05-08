@@ -1,4 +1,4 @@
-bucket="gql-test-1"
+bucket="serverless-database-amma"
 region="eu-west-1"
 
 aws s3api create-bucket \

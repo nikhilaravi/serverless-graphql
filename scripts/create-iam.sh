@@ -1,5 +1,5 @@
 #!/bin/bash
-role_name='lambda_execution_weekend_test_1'
+role_name='lambda_execution_sunday_test_amma'
 
 # IAM trust policy
 

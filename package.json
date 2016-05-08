@@ -1,12 +1,12 @@
 {
   "name": "serverless-graphql",
-  "version": "2.0.0",
+  "version": "4.0.0",
   "description": "A serverless app built using AWS lambda, API gateway, React and graphql",
   "main": "index.js",
   "scripts": {
     "create-iam": "source ./scripts/create-iam.sh",
     "create-s3": ". ./scripts/create-s3-bucket.sh",
-    "deploy-lambda": "node ./node_modules/dpl/dpl.js",
+    "deploy": "node ./node_modules/dpl/dpl.js",
     "create-api": ". ./scripts/create-api.sh",
     "deploy-app": "npm run deploy-lambda && npm run create-api"
   },

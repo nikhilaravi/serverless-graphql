@@ -1,13 +1,16 @@
 #!/bin/bash
 
-api_name='serverless-graphql-demo-saturday'
+## TO BE SET
+api_name='demo-sunday-amma'
+lambda_function="serverless-graphql-v4"
+
+
 api_description="Graphql endpoint"
 root_path=/
 resource_path=graphql
 stage_name=prod
 region=$AWS_REGION
 account_id=$AWS_ACCOUNT_ID
-lambda_function="serverless-graphql-v2"
 random_id1=$[(RANDOM+RANDOM)*100000]
 random_id2=$[(RANDOM+RANDOM)*100000]
 
