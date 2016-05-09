@@ -1,8 +1,8 @@
 #!/bin/bash
 
 ## TO BE SET
-api_name="serverless-graphql"
-lambda_function="serverless-graphql"
+api_name="serverless-graphql-v1"
+lambda_function="serverless-graphql-v1"
 ###
 
 api_description="Graphql endpoint"

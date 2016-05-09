@@ -1,4 +1,4 @@
-bucket="serverless-test-database"
+bucket="serverless-database"
 region="eu-west-1"
 
 aws s3api create-bucket \

@@ -1,0 +1,41 @@
+'use strict';
+
+var graphql = require('graphql').graphql;
+var assert = require('assert');
+const simple = require('simple-mock');
+
+var playlist = require('../../lib/schema/query/playlistQuery.js');
+var root = require('../../lib/schema').root;
+var playlistService = require('../../lib/services/playlistService.js');
+
+var introspect = require('../utils/introspectGraphQL');
+var schemaHelper = require('../utils/schemaHelper');
+
+var playlistQuery = require('./fixtures').playlistQuery;
+
+describe('Playlist schema', function () {
+  it('should be possible to introspect the playlistQuery schema', function (done) {
+    var schema = schemaHelper.createQuerySchema(playlist.playlistQuery);
+    introspect.introspectGraphQL(schema, done);
+  });
+
+  it('should be able to execute the playlistQuery', function (done) {
+    var playlist = [{
+      name: 'Hello',
+      artist: 'Adele',
+      url: 'url',
+      imageUrl: 'imageUrl'
+    }];
+    var stub = simple.mock(playlistService, 'retrievePlaylist').resolvesWith(playlist);
+    var expectedResult = {
+      'data': {
+        'playlist': playlist
+      }
+    };
+    graphql(root, playlistQuery, null, {}).then(function (result) {
+      assert.deepEqual(result, expectedResult);
+      stub.restore();
+      done();
+    }).catch(done);
+  });
+});
