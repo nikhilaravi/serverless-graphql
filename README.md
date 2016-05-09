@@ -135,6 +135,16 @@ GREAT! Your lambda and api are now ready for the front end!
 Head over to https://github.com/nikhilaravi/serverless-graphql-app to learn how to deploy the GraphiQL IDE to query your schema and the UI for the Jukebox app!
 
 
+## What about tests?
+
+There are some example tests in the test folder for the GraphQL schema and services. You can run the tests with
+
+```sh
+npm test
+```
+
+The coverage isn't 100% yet but i'll be adding more tests soon!!
+
 ## TODO
 
 * [ ] Add more notes on the AWS configuration and setting up of credentials and the cli
