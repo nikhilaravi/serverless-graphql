@@ -73,16 +73,36 @@ and to the `.env` file add:
 ``
 S3_BUCKET='name of bucket'
 ``
-### 3. Create a GraphQL lambda function and connect it to an API GATEWAY endpoint.
 
-Now time to deploy the lambda function and API endpoint!
+### 3. Create the microservices
 
-The lambda function is uploaded using the `dpl` node module. The components of the function are specified in the `files_to_deploy` key in the `package.json`. The important file is `index.js` which must contain an `exports.handler` function which accepts `event` and `context` parameters. The node modules in the `dependencies` in the `package.json` are also zipped along with any other files that are specified before being uploaded to AWS Lambda (either updating a function or creating a new function if it doesn't exist).
+There are three microservices apart from the GraphQL microservice.
+
+Clone the following repos and run `npm run deploy` for each one.
+
+* [**song-suggester**](https://github.com/nikhilaravi/song-suggester) - Queries the Last.fm api to retrieve song suggestions (requires an `API_KEY` as an environment variable)
+* [**s3-save**](https://github.com/nikhilaravi/s3-save) - Saves a selected song to an s3 bucket
+* [**s3-get**](https://github.com/nikhilaravi/s3-get) - Retrieves all songs from an s3 bucket
+
+The lambda functions are zipped and uploaded to AWS using the `dpl` node module. The components of the function are specified in the `files_to_deploy` key in the `package.json`. The important file is `index.js` which must contain an `exports.handler` function which accepts `event` and `context` parameters. The node modules in the `dependencies` in the `package.json` are also zipped along with any other files that are specified before being uploaded to AWS Lambda (either updating a function or creating a new function if it doesn't exist).
+
+`dpl` names the lambda using the name in the `package.json` with the major version number suffixed e.g. _'serverless-graphql-v1'_.
 
 Have a look at the notes in the [dpl npm module docs](https://github.com/numo-labs/aws-lambda-deploy) or ask @nelsonic for more info!
 
-To modify the name of the API you can edit the `./scripts/create-api.sh` file. You need to set the name of the lambda function at the top of this file. dpl names the lambda using the name in the `package.json` with the major version number suffixed e.g. 'serverless-graphql-v1'.
+Then save the following three environment variables to the `.env` file in this repo - this will be used by the graphql lambda to call the correct microservice.
 
+```sh
+LAMBDA_SONG_SUGGESTER=song-suggester-v1
+LAMBDA_S3_SAVE=s3-save-v1
+LAMBDA_S3_GET=s3-get-v1
+```
+
+### 4. Create a GraphQL lambda function and connect it to an API GATEWAY endpoint.
+
+Now time to deploy the GraphQL lambda function and connect it to the API endpoint!
+
+To modify the name of the API you can edit the `./scripts/create-api.sh` file. You need to set the name of the lambda function at the top of this file.
 Run the following command in your terminal window (which has all the environment variables set)
 
 ```sh
@@ -117,5 +137,6 @@ Head over to https://github.com/nikhilaravi/serverless-graphql-app to learn how 
 
 ## TODO
 
-* [ ] update the 'create-api' script to update the gateway endpoint if it has already been created
-* [ ] add a script to Enable Cors from the command line
+* [ ] Add more notes on the AWS configuration and setting up of credentials and the cli
+* [ ] Update the 'create-api' script to update the gateway endpoint if it has already been created
+* [ ] Add a script to Enable CORS from the command line
