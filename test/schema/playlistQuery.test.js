@@ -8,8 +8,8 @@ var playlist = require('../../lib/schema/query/playlistQuery.js');
 var root = require('../../lib/schema').root;
 var playlistService = require('../../lib/services/playlistService.js');
 
-var introspect = require('../utils/introspectGraphQL');
-var schemaHelper = require('../utils/schemaHelper');
+var introspect = require('../test-helpers/introspectGraphQL');
+var schemaHelper = require('../test-helpers/schemaHelper');
 
 var playlistQuery = require('./fixtures').playlistQuery;
 
@@ -26,7 +26,7 @@ describe('Playlist schema', function () {
       url: 'url',
       imageUrl: 'imageUrl'
     }];
-    var stub = simple.mock(playlistService, 'retrievePlaylist').resolvesWith(playlist);
+    simple.mock(playlistService, 'retrievePlaylist').resolveWith(playlist);
     var expectedResult = {
       'data': {
         'playlist': playlist
@@ -34,7 +34,7 @@ describe('Playlist schema', function () {
     };
     graphql(root, playlistQuery, null, {}).then(function (result) {
       assert.deepEqual(result, expectedResult);
-      stub.restore();
+      simple.restore();
       done();
     }).catch(done);
   });

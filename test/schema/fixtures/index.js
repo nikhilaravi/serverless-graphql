@@ -1,4 +1,4 @@
-export const playlistQuery = `
+exports.playlistQuery = `
 query {
 	playlist {
     name,
@@ -9,9 +9,9 @@ query {
 }
 `;
 
-export const suggestionsQuery = `
+exports.suggestionsQuery = `
 query($query: String) {
-	suggestions {
+	suggestions(query: $query) {
     name,
     artist,
     url,
@@ -20,7 +20,7 @@ query($query: String) {
 }
 `;
 
-export const addTrackMutation = `
+exports.addTrackMutation = `
   mutation addTrackMutation($name: String, $artist: String, $url: String, $imageUrl: String) {
     addTrack(name: $name, artist: $artist, url: $url, imageUrl: $imageUrl) {
       id

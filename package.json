@@ -10,7 +10,7 @@
     "create-api": ". ./scripts/create-api.sh",
     "deploy-app": "npm run deploy-lambda && npm run create-api",
     "test": "node ./node_modules/.bin/mocha ./test/**/*.js",
-    "coverage": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha ./test/**/*.js --report lcov -- -R spec",
+    "coverage": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha ./test/**/*.js --report lcov -- -R spec"
   },
   "repository": {
     "type": "git",
@@ -33,10 +33,12 @@
   "homepage": "https://github.com/nikhilaravi/serverless-graphql#readme",
   "devDependencies": {
     "aws-sdk": "^2.3.7",
+    "aws-sdk-mock": "^1.0.10",
     "dpl": "^3.0.1",
     "istanbul": "^0.4.2",
     "mocha": "^2.4.5",
     "simple-mock": "^0.6.0",
+    "sinon": "^1.17.4"
   },
   "files_to_deploy": [
     "package.json",
@@ -45,8 +47,8 @@
     ".env"
   ],
   "dependencies": {
+    "env2": "^2.0.7",
     "graphql": "^0.5.0",
-    "lodash.isempty": "^4.2.1",
-    "env2": "^2.0.7"
+    "lodash.isempty": "^4.2.1"
   }
 }

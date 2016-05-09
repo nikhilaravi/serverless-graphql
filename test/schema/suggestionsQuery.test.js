@@ -8,8 +8,8 @@ var suggestions = require('../../lib/schema/query/suggestionsQuery.js');
 var root = require('../../lib/schema').root;
 var suggestionsService = require('../../lib/services/suggestionsService.js');
 
-var introspect = require('../utils/introspectGraphQL');
-var schemaHelper = require('../utils/schemaHelper');
+var introspect = require('../test-helpers/introspectGraphQL');
+var schemaHelper = require('../test-helpers/schemaHelper');
 
 var suggestionsQuery = require('./fixtures').suggestionsQuery;
 
@@ -26,15 +26,16 @@ describe('Suggestions schema', function () {
       url: 'url',
       imageUrl: 'imageUrl'
     }];
-    var stub = simple.mock(suggestionsService, 'retrieveSongSuggestions').resolvesWith(songSuggestions);
+    simple.mock(suggestionsService, 'retrieveSongSuggestions').resolveWith(songSuggestions);
     var expectedResult = {
       'data': {
         'suggestions': songSuggestions
       }
     };
-    graphql(root, suggestionsQuery, null, {}).then(function (result) {
+    var variables = { query: 'str' };
+    graphql(root, suggestionsQuery, null, variables).then(function (result) {
       assert.deepEqual(result, expectedResult);
-      stub.restore();
+      simple.restore();
       done();
     }).catch(done);
   });
