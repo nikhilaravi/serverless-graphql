@@ -30,6 +30,7 @@ The GraphQL IDE and UI live here: https://github.com/nikhilaravi/serverless-grap
 
 Add the following environment variables to a .env file
 ```sh
+AWS_ACCOUNT_ID=[your_account_id_here]
 AWS_ACCESS_KEY_ID=[your_key_here]
 AWS_SECRET_ACCESS_KEY=[your_secret_here]
 AWS_REGION=[aws_region] (e.g. 'eu-west-1')
